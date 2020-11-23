@@ -1,0 +1,87 @@
+---
+title: "Webscraping - Assignment 1"
+author: "AttilaSerfozo"
+date: '2020.11.23 '
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+  html_document:
+    df_print: paged
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(rvest)
+library(data.table)
+```
+
+## The website scraped is pcmag.com, which is one of the largest online tech magazine.
+
+In the exercise I collected Title, Summary, Author and Link of the articles as key variables.
+
+```{r}
+
+# Page scraper
+get_one_page <- function(my_url) {
+  
+  t <- read_html(my_url)
+  boxes <- 
+    t %>% 
+    html_nodes('#app .border-gray-lighter')
+  
+  box_dfs <- lapply(boxes, function(x){
+    tlist <- list()
+    
+  # The title needed to be cleared as in many cases the pcmag review, where 
+  # existed, got mixed with the title producing more columns  
+    ttitle <- x %>% 
+      html_node('.font-bold')%>%
+      html_text()
+    if (endsWith(ttitle, 'Review')) {
+      ttile <- substring(ttitle, 1, (nchar(ttitle)-6) )
+    }
+    tlist[['Title']] <- ttitle
+    
+    tlist[['Author']] <-
+      gsub('\n', ' ', trimws(  x %>% 
+                                 html_nodes('.mr-3+ .font-brand')%>%
+                                 html_text()
+      ), fixed = T)
+    
+    tlist[['Summary']] <-
+      x %>% 
+      html_nodes('.line-clamp')%>%
+      html_text()
+    
+    my_relative_link <- 
+      x%>% 
+      html_node('a')%>%
+      html_attr('href')
+    
+    tlist[['Link']] <- paste0('https://www.pcmag.com', my_relative_link)
+    
+    return(tlist)
+  })
+  
+  df <- rbindlist(box_dfs, fill = T)
+  return(df)
+  
+}
+
+# Link creation and final function
+get_data_of_pcmag <- function(keyword,number_of_page) {
+  
+  pages <- paste0('https://www.pcmag.com/search/results?query=',keyword,'&page=', 1:number_of_page)
+  pages_df <- rbindlist(lapply(pages, get_one_page))
+  return(pages_df)
+}
+```
+
+## The final output looks like the following:
+```{r message=FALSE, warning=FALSE}
+pcmag_scraping <- get_data_of_pcmag('printer',4)
+knitr::kable(pcmag_scraping)
+```
+
+```{r include=FALSE}
+write.csv(pcmag_scraping, file = 'pcmag_scraped_data.csv')
+```
