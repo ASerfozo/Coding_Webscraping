@@ -1,0 +1,302 @@
+---
+title: "Webscraping - Assignment 2"
+author: "AttilaSerfozo"
+date: '2020.12.14 '
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+
+rm(list=ls())
+library(prettydoc)
+library(data.table)
+library(rvest)
+library(tidyverse)
+
+data_out <- "C:/Users/Attila/Documents/CEU/Coding_Webscraping/Assignment2-hasznaltauto/"
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+In this project I collected data from the catalog of the most used Hungarian used car website hasznaltauto.hu. During the exercise I collect all the available car brands which is presented in the website's catalog then I create a function to get all information for one car and another function to generate the link of cars for the selected brand. In the end I finish with a function in which the user needs to type in a brand from the brand list, located in the data folder. As there are thousands of observations in case of some brands, and the running of the query can last long I tried the exercise with Bentley (63 observations), Maserati (138 observations), Alfa-Romeo (854 observations) and Honda (1442 observations) as they took a reasonable amount of time.
+
+## Get list of car brands
+The list contains the name of the brands in the format in which they need to be inserted into the get_car_data function. The list can be found in the data folder.
+
+```{r echo=TRUE}
+main_page <- 'https://katalogus.hasznaltauto.hu/'
+t <- read_html(main_page)
+brands <-
+  t %>% 
+  html_nodes('.nemlatszik') %>%
+  html_text()
+
+# Cleaning brands
+brands <- brands[2]
+brands <- gsub(' ', '_', trimws(gsub('\n', ',', trimws(gsub('\t', '', trimws(brands), fixed = T)), fixed = T)), fixed = T)
+brands <- strsplit(brands,",")[[1]]
+brands <- tolower(brands)
+brands <- brands[2:107]
+
+write.csv(brands,paste0(data_out,"data/available_brands.csv"))
+```
+
+## Function for getting data of one car
+This function collects the name, link and all the important data of a brands' cars.
+```{r echo=TRUE}
+
+my_link <- 'https://katalogus.hasznaltauto.hu/abarth/124_spider_1.4_multiair_t-107786'
+get_one_car <- function(my_link) {
+  
+  t2 <- read_html(my_link)
+  
+  specification_list <- list()
+  
+  # Collect name of car
+  titles <-
+    t2 %>% 
+    html_nodes('h1') %>%
+    html_text()
+  # Collect link of car
+  link <- my_link
+  
+  # Add name and link to the list
+  specification_list [['Név']] <- titles
+  specification_list [['Link']] <- link
+  
+  # Collect car data
+  category <- t2 %>%  html_nodes('.w250') %>%  html_text()
+  values <- t2 %>% html_nodes('.w250+ td') %>%  html_text()
+  # Append them to the list
+  if (length(category) == length(values)) {
+    for (key_id in 1:length(values)) {
+      #print(key_id) 
+      specification_list[[ category[key_id] ]] <- values[key_id]
+    }
+    
+  }
+  return(specification_list)
+}
+
+```
+
+## Function for getting car data of the selected brand
+This function generates the links of the selected brands' cars available in the catalog.
+After generating the links the function combine them with the get_one_car function and gathers all their important properties.
+
+```{r echo=TRUE}
+get_car_data <- function(brand) {
+  #brand <- 'bentley'
+  
+  # Find last page of the brand car list
+  x <- read_html(paste0('https://katalogus.hasznaltauto.hu/',brand))
+  last_page <-
+    x %>% 
+    html_nodes('.utolso a') %>%
+    html_attr('href')
+  
+  if(length(last_page) == 0) { # If there is no jump to last page button ~ try maserati
+    if (length(x %>% 
+        html_nodes('.oldalszamozas .oldalszam') %>%
+        html_text()) == 0) {   # If there is only 1 page ~ try bentley
+      last_page <- 1
+    }else{
+    last_page <-
+      x %>% 
+      html_nodes('.oldalszamozas .oldalszam') %>%
+      html_text()
+    last_page <- as.numeric(tail(last_page, n=1))
+    }
+  }else{                       # If there is a jump to last page button ~ try honda
+    last_page <- as.numeric(gsub("[^0-9]","",last_page ) )
+  }
+  
+  # Generate pagesand car links
+  pages <- paste0('https://katalogus.hasznaltauto.hu/',brand,'/page', 1:last_page)
+  
+  car_links <- NULL
+  for (i in 1:length(pages)) {
+    
+    p <- read_html(pages[i])
+    
+    car_links <- c(car_links,
+                   p %>% 
+                     html_nodes('.hasonlit-jelolgeto a') %>%
+                     html_attr('href')
+    )
+  }
+  
+  df <- rbindlist(lapply(car_links, get_one_car), fill = T)
+  return(df)
+  
+}
+```
+
+# Test the function to download some data
+In case of running the function be aware that some cars have more than one thousand items in the catalog, thus sometimes it requires a lot of time to download their data.
+```{r echo=TRUE}
+car_data1 <- get_car_data('bentley')
+write.csv(car_data1,paste0(data_out,"data/raw/bentley-catalog.csv"))
+#
+# car_data2 <- get_car_data('maserati')
+# write.csv(car_data2,paste0(data_out,"data/raw/maserati-catalog.csv"))
+# 
+# car_data3 <- get_car_data('alfa_romeo')
+# write.csv(car_data3,paste0(data_out,"data/raw/alfa_romeo-catalog.csv"))
+# 
+# car_data4 <- get_car_data('honda')
+# write.csv(car_data4,paste0(data_out,"data/raw/honda-catalog.csv"))
+```
+
+## Data Cleaning and exploration of distribution of variables
+In the catalog_hasznaltauto-clean_data.R you can find the process of cleaning the scraped raw data file.
+Please write the name of the selected brand in the "selected_brand" variable to write out the cleaned data.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, out.width='50%'}
+
+#########################################
+# Please add downloaded brand here
+selected_brand <- 'alfa_romeo'
+#########################################
+
+data_in <- "C:/Users/Attila/Documents/CEU/Coding_Webscraping/Assignment2-hasznaltauto/data/"
+car_data <- read.csv(paste0(data_in,"raw/",selected_brand,"-catalog.csv"))
+
+car_data_clean <- separate(car_data, Maximális.teljesítmény, "," ,
+                    into = c('Maximális.teljesítmény.kW', 'Maximális.teljesítmény.LE'))
+car_data_clean <- 
+  car_data_clean %>%
+  mutate ( "Gyorsulás.0.ról.100.km.h.ra" = gsub(",", ".", car_data_clean$Gyorsulás.0.ról.100.km.h.ra),
+           "Vegyes.fogyasztás" = gsub(",", ".", car_data_clean$Vegyes.fogyasztás))
+
+car_data_clean <- 
+  car_data_clean %>% 
+  transmute(
+    'ID' = X,
+    'Név' = Név,
+    'Link' = Link,
+    'Kategória' = Kategória,
+    'Kivitel' = Kivitel,
+    #'Gyártási.idoszak' = Gyártási.időszak,
+    'Üzemanyag' = Üzemanyag,
+    'Újkori.ára.(mHUF)' = as.numeric(gsub("[^0-9]","",Újkori.ára) )/1000000,
+    'Hengerek.száma' = as.numeric(gsub("[^0-9]","",Hengerek.száma) ),
+    'Maximális.teljesítmény.(kW)' = as.numeric(gsub("[^0-9]","",Maximális.teljesítmény.kW) ),
+    'Maximális.teljesítmény.(LE)' = as.numeric(gsub("[^0-9]","",Maximális.teljesítmény.LE) ),
+    'Végsebesség.(km/h)' = as.numeric(gsub("[^0-9]","",Végsebesség) ),
+    'Gyorsulás.(s)' = as.numeric(gsub("[^0-9\\.]","",car_data_clean$Gyorsulás.0.ról.100.km.h.ra) ),
+    'CO2.kibocsátás.(g/km)' = as.numeric(gsub("[^0-9]","",CO2.kibocsátás) ),
+    'Vegyes.fogyasztás.(l)' = as.numeric(gsub("[^0-9\\.]","",Vegyes.fogyasztás) ),
+    'Össztömeg.(kg)' = as.numeric(gsub("[^0-9]","",Össztömeg) ),
+    'Szélesség.(mm)' = as.numeric(gsub("[^0-9]","",Szélesség) ),
+    'Hosszúság.(mm)' = as.numeric(gsub("[^0-9]","",Hosszúság) ),
+    'Magasság.(mm)' = as.numeric(gsub("[^0-9]","",Magasság) ),
+    'Ajtók.száma' = as.numeric(gsub("[^0-9]","",Ajtók.száma) ),
+    'Szállítható.személyek.száma' = as.numeric(gsub("[^0-9]","",Szállítható.személyek.száma) )
+  )
+
+data_out <- "C:/Users/Attila/Documents/CEU/Coding_Webscraping/Assignment2-hasznaltauto/data/"
+write.csv(car_data_clean,paste0(data_out,"clean/",selected_brand,"-catalog.csv"))
+
+# Showing distribution of variables
+
+ggplot( data = car_data_clean , aes( x = `Újkori.ára.(mHUF)` ) )+
+  geom_histogram( binwidth =2, fill= "navyblue",col="black", alpha=0.7) +
+  stat_bin(geom = "text", binwidth = 2, 
+           aes(label = ifelse(..count.. > 0, ..count.., "")), vjust = -0.5)+
+  labs(x="Price in million HUF",y="Absolute Frequency", title="Distribution of car prices with 2m HUF bins")
+
+ggplot( data = car_data_clean , aes( x = `Kategória` ) )+
+  geom_bar( fill= "navyblue",col="black", alpha=0.7) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
+  labs(x="Classes",y="Absolute Frequency", title="Distribution of cars between categories")
+
+ggplot( data = car_data_clean , aes( x = `Kivitel` ) )+
+  geom_bar( fill= "navyblue",col="black", alpha=0.7) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
+  labs(x="Types",y="Absolute Frequency", title="Distribution of cars between types")
+
+
+ggplot( data = car_data_clean , aes( x = `Üzemanyag` ) )+
+  geom_bar( fill= "navyblue",col="black", alpha=0.7) +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
+  labs(x="Fuel types",y="Absolute Frequency", title="Distribution of cars between fuel types")
+
+ggplot( data = car_data_clean , aes( x = `Hengerek.száma` ) )+
+  geom_histogram( binwidth =1, fill= "navyblue",col="black", alpha=0.7) +
+  stat_bin(geom = "text", binwidth = 1, 
+           aes(label = ifelse(..count.. > 0, ..count.., "")), vjust = -0.5)+
+  labs(x="Number of cylinders",y="Absolute Frequency", title="Distribution of Number of cylinders")
+
+ggplot( data = car_data_clean , aes( x = `Maximális.teljesítmény.(LE)` ) )+
+  geom_histogram( binwidth =25, fill= "navyblue",col="black", alpha=0.7) +
+  stat_bin(geom = "text", binwidth = 25, 
+           aes(label = ifelse(..count.. > 0, ..count.., "")), vjust = -0.5)+
+  labs(x="Performance in horsepower",y="Absolute Frequency", title="Distribution of strength of cars with 25 horsepower bins")
+
+ggplot( data = car_data_clean , aes( x = `Végsebesség.(km/h)` ) )+
+  geom_histogram( binwidth =10, fill= "navyblue",col="black", alpha=0.7) +
+  stat_bin(geom = "text", binwidth = 10, 
+           aes(label = ifelse(..count.. > 0, ..count.., "")), vjust = -0.5)+
+  labs(x="Max speed in km/h",y="Absolute Frequency", title="Distribution of max speed of cars with 10 km/h bins")
+
+ggplot( data = car_data_clean , aes( x = `Gyorsulás.(s)` ) )+
+  geom_histogram( binwidth =0.5, fill= "navyblue",col="black", alpha=0.7) +
+  stat_bin(geom = "text", binwidth = 0.5, 
+           aes(label = ifelse(..count.. > 0, ..count.., "")), vjust = -0.5)+
+  labs(x="Acceleration in seconds",y="Absolute Frequency", title="Distribution of acceleration of cars with 0.5s bins")
+
+ggplot( data = car_data_clean , aes( x = `CO2.kibocsátás.(g/km)` ) )+
+  geom_histogram( binwidth =20, fill= "navyblue",col="black", alpha=0.7) +
+  stat_bin(geom = "text", binwidth = 20, 
+           aes(label = ifelse(..count.. > 0, ..count.., "")), vjust = -0.5)+
+  labs(x="CO2 emission in g/km",y="Absolute Frequency", title="Distribution of CO2 car emissions with 20 g/km bins")
+
+ggplot( data = car_data_clean , aes( x = `Vegyes.fogyasztás.(l)` ) )+
+  geom_histogram( binwidth =1, fill= "navyblue",col="black", alpha=0.7) +
+  stat_bin(geom = "text", binwidth = 1, 
+           aes(label = ifelse(..count.. > 0, ..count.., "")), vjust = -0.5)+
+  labs(x="Mixed fuel consumption in litres",y="Absolute Frequency", title="Distribution of mixed fuel consumtion with 1l bins")
+
+ggplot( data = car_data_clean , aes( x = `Ajtók.száma` ) )+
+  geom_histogram( binwidth =1, fill= "navyblue",col="black", alpha=0.7) +
+  stat_bin(geom = "text", binwidth = 1, 
+           aes(label = ifelse(..count.. > 0, ..count.., "")), vjust = -0.5)+
+  labs(x="Number of doors",y="Absolute Frequency", title="Distribution of number of doors")
+
+ggplot( data = car_data_clean , aes( x = `Szállítható.személyek.száma` ) )+
+  geom_histogram( binwidth =1, fill= "navyblue",col="black", alpha=0.7) +
+  stat_bin(geom = "text", binwidth = 1, 
+           aes(label = ifelse(..count.. > 0, ..count.., "")), vjust = -0.5)+
+  labs(x="Carried passengers",y="Absolute Frequency", title="Distribution of carried passengers")
+
+ggplot( data = car_data_clean , aes( x = `Össztömeg.(kg)` ) )+
+  geom_histogram( binwidth =100, fill= "navyblue",col="black", alpha=0.7) +
+  stat_bin(geom = "text", binwidth = 100, 
+           aes(label = ifelse(..count.. > 0, ..count.., "")), vjust = -0.5)+
+  labs(x="Weight in kg",y="Absolute Frequency", title="Distribution of weight with 100 kg bins")
+
+ggplot( data = car_data_clean , aes( x = `Szélesség.(mm)` ) )+
+  geom_histogram( binwidth =50, fill= "navyblue",col="black", alpha=0.7) +
+  stat_bin(geom = "text", binwidth = 50, 
+           aes(label = ifelse(..count.. > 0, ..count.., "")), vjust = -0.5)+
+  labs(x="Width in mm",y="Absolute Frequency", title="Distribution of width with 5 cm bins")
+
+ggplot( data = car_data_clean , aes( x = `Hosszúság.(mm)` ) )+
+  geom_histogram( binwidth =50, fill= "navyblue",col="black", alpha=0.7) +
+  stat_bin(geom = "text", binwidth = 50, 
+           aes(label = ifelse(..count.. > 0, ..count.., "")), vjust = -0.5)+
+  labs(x="Length in mm",y="Absolute Frequency", title="Distribution of length with 5 cm bins")
+
+ggplot( data = car_data_clean , aes( x = `Magasság.(mm)` ) )+
+  geom_histogram( binwidth =50, fill= "navyblue",col="black", alpha=0.7) +
+  stat_bin(geom = "text", binwidth = 50, 
+           aes(label = ifelse(..count.. > 0, ..count.., "")), vjust = -0.5)+
+  labs(x="Height in mm",y="Absolute Frequency", title="Distribution of height with 5 cm bins")
+
+
+```

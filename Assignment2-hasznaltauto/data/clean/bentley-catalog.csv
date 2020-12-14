@@ -1,0 +1,64 @@
+"","ID","Név","Link","Kategória","Kivitel","Üzemanyag","Újkori.ára.(mHUF)","Hengerek.száma","Maximális.teljesítmény.(kW)","Maximális.teljesítmény.(LE)","Végsebesség.(km/h)","Gyorsulás.(s)","CO2.kibocsátás.(g/km)","Vegyes.fogyasztás.(l)","Össztömeg.(kg)","Szélesség.(mm)","Hosszúság.(mm)","Magasság.(mm)","Ajtók.száma","Szállítható.személyek.száma"
+"1",1,"BENTLEY 4.4 V8 32V Turbo (1998–)","https://katalogus.hasznaltauto.hu/bentley/4.4_v8_32v_turbo-67488",NA,"Lépcsõshátú","Benzin",NA,8,260,354,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"2",2,"BENTLEY 6.8 V8 (1999–)","https://katalogus.hasznaltauto.hu/bentley/6.8_v8-67489",NA,"Lépcsõshátú","Benzin",NA,8,298,405,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"3",3,"BENTLEY 6.8 V8 T (2002–)","https://katalogus.hasznaltauto.hu/bentley/6.8_v8_t-67490",NA,"Lépcsõshátú","Benzin",NA,8,336,457,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"4",4,"BENTLEY 6.7 (2002-2005)","https://katalogus.hasznaltauto.hu/bentley/6.7-67491",NA,"Lépcsõshátú","Benzin",NA,8,313,426,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"5",5,"BENTLEY 6.8 V8 T (2002–)","https://katalogus.hasznaltauto.hu/bentley/6.8_v8_t-67492",NA,"Lépcsõshátú","Benzin",NA,8,373,507,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"6",6,"BENTLEY 6.8 (2006–)","https://katalogus.hasznaltauto.hu/bentley/6.8-67493",NA,"Coupe","Benzin",NA,8,373,507,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"7",7,"BENTLEY 6.8 (2005–)","https://katalogus.hasznaltauto.hu/bentley/6.8-67494",NA,"Coupe","Benzin",NA,8,336,457,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"8",8,"BENTLEY 4.4 32V (1999-2001)","https://katalogus.hasznaltauto.hu/bentley/4.4_32v-67495",NA,"Lépcsõshátú","Benzin",NA,8,261,355,NA,NA,NA,NA,NA,NA,NA,NA,4,NA
+"9",9,"BENTLEY 4.4 32V (2000-2001)","https://katalogus.hasznaltauto.hu/bentley/4.4_32v-67496",NA,"Lépcsõshátú","Benzin",NA,8,261,355,NA,NA,NA,NA,NA,NA,NA,NA,4,NA
+"10",10,"BENTLEY 4.4 32V (2000-2001)","https://katalogus.hasznaltauto.hu/bentley/4.4_32v-67497",NA,"Lépcsõshátú","Benzin",NA,8,261,355,NA,NA,NA,NA,NA,NA,NA,NA,4,NA
+"11",11,"BENTLEY 6.7 16V (2000-2001)","https://katalogus.hasznaltauto.hu/bentley/6.7_16v-67498",NA,"Lépcsõshátú","Benzin",NA,8,299,407,NA,NA,NA,NA,NA,NA,NA,NA,4,NA
+"12",12,"BENTLEY 6.7 16V (2000-2005)","https://katalogus.hasznaltauto.hu/bentley/6.7_16v-67499",NA,"Lépcsõshátú","Benzin",NA,8,299,407,NA,NA,NA,NA,NA,NA,NA,NA,4,NA
+"13",13,"BENTLEY 6.8 16V (2006-2007)","https://katalogus.hasznaltauto.hu/bentley/6.8_16v-67500",NA,"Lépcsõshátú","Benzin",NA,8,298,405,NA,NA,NA,NA,NA,NA,NA,NA,4,NA
+"14",14,"BENTLEY 6.75 V8 (1995-1999)","https://katalogus.hasznaltauto.hu/bentley/6.75_v8-67501",NA,"Cabrio","Benzin",NA,8,286,389,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"15",15,"BENTLEY 6.75 V8 Mulliner (1999-2006)","https://katalogus.hasznaltauto.hu/bentley/6.75_v8_mulliner-67502",NA,"Cabrio","Benzin",NA,8,313,426,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"16",16,"BENTLEY 6.75 V8 (1999-2006)","https://katalogus.hasznaltauto.hu/bentley/6.75_v8-67503",NA,"Cabrio","Benzin",NA,8,300,408,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"17",17,"BENTLEY 6.7 T (2005–)","https://katalogus.hasznaltauto.hu/bentley/6.7_t-67504",NA,"Cabrio","Benzin",NA,8,336,457,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"18",18,"BENTLEY 6.8 (2006–)","https://katalogus.hasznaltauto.hu/bentley/6.8-67505",NA,"Cabrio","Benzin",NA,8,336,457,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"19",19,"BENTLEY 6.8 (2006–)","https://katalogus.hasznaltauto.hu/bentley/6.8-67506",NA,"Cabrio","Benzin",NA,8,373,507,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"20",20,"BENTLEY 6.7 16V (1996-1998)","https://katalogus.hasznaltauto.hu/bentley/6.7_16v-67507",NA,"Cabrio","Benzin",NA,8,287,390,NA,NA,NA,NA,NA,NA,NA,NA,2,NA
+"21",21,"BENTLEY 6.7 16V (1996-2003)","https://katalogus.hasznaltauto.hu/bentley/6.7_16v-67508",NA,"Cabrio","Benzin",NA,8,287,390,NA,NA,NA,NA,NA,NA,NA,NA,2,NA
+"22",22,"BENTLEY 6.8 16V (2006.)","https://katalogus.hasznaltauto.hu/bentley/6.8_16v-67509",NA,"Cabrio","Benzin",NA,8,298,405,NA,NA,NA,NA,NA,NA,NA,NA,2,NA
+"23",23,"BENTLEY Bentley Azure (Automata)  (1996-2002)","https://katalogus.hasznaltauto.hu/bentley/bentley_azure_automata-103174","Nagykocsi","Cabrio","Benzin",125.38,8,283,385,249,6.3,413,17.31,3030,2058,5342,1475,2,4
+"24",24,"BENTLEY Bentayga 4.0 V8 (2016–)","https://katalogus.hasznaltauto.hu/bentley/bentayga_4.0_v8-129361","Nagykocsi","Kombi","Benzin",66.942,8,405,551,290,4.5,260,11.41,3250,1998,5141,1742,5,5
+"25",25,"BENTLEY Bentayga 6.0 W12 (2016–)","https://katalogus.hasznaltauto.hu/bentley/bentayga_6.0_w12-129362","Nagykocsi","Kombi","Benzin",78.922,12,447,608,301,4.1,296,13.11,3250,1998,5141,1742,5,5
+"26",26,"BENTLEY Bentayga 4.0 V8 Dízel  (2016–)","https://katalogus.hasznaltauto.hu/bentley/bentayga_4.0_v8_dizel-129363","Nagykocsi","Kombi","Dízel",66.231,8,320,435,270,4.8,210,8.01,3250,1998,5141,1742,5,5
+"27",27,"BENTLEY 6.7 (1992-1997)","https://katalogus.hasznaltauto.hu/bentley/6.7-67510",NA,"Lépcsõshátú","Benzin",NA,8,160,218,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"28",28,"BENTLEY 6.7 Long (1992-1997)","https://katalogus.hasznaltauto.hu/bentley/6.7_long-67511",NA,"Lépcsõshátú","Benzin",NA,8,177,241,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"29",29,"BENTLEY 6.8 V8 (2008–)","https://katalogus.hasznaltauto.hu/bentley/6.8_v8-67512",NA,"Coupe","Benzin",NA,8,395,537,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"30",30,"BENTLEY 6.7 16V (1993-1998)","https://katalogus.hasznaltauto.hu/bentley/6.7_16v-67513",NA,"Lépcsõshátú","Benzin",NA,8,239,325,NA,NA,NA,NA,NA,NA,NA,NA,4,NA
+"31",31,"BENTLEY Bentley Brooklands (Automata)  (1994-1995)","https://katalogus.hasznaltauto.hu/bentley/bentley_brooklands_automata-103162","Nagykocsi","Sedan","Benzin",26.98,8,180,245,215,9.8,NA,NA,2930,1880,5270,1480,4,5
+"32",32,"BENTLEY Bentley Brooklands (LWB) (Automata)  (1994-1995)","https://katalogus.hasznaltauto.hu/bentley/bentley_brooklands_lwb_automata-103163","Nagykocsi","Sedan","Benzin",31.386,8,180,245,215,9.8,NA,NA,2350,1880,5370,1480,4,5
+"33",33,"BENTLEY Bentley Brooklands (Automata)  (1996-2002)","https://katalogus.hasznaltauto.hu/bentley/bentley_brooklands_automata-103168","Nagykocsi","Sedan","Benzin",65.72,8,224,305,214,10,399,16.71,2930,2110,5294,1485,4,5
+"34",34,"BENTLEY Bentley Brooklands (LWB) (Automata)  (1997-2002)","https://katalogus.hasznaltauto.hu/bentley/bentley_brooklands_lwb_automata-103169","Nagykocsi","Sedan","Benzin",65.72,8,224,305,214,10,399,16.71,2970,2110,5395,1485,4,5
+"35",35,"BENTLEY Bentley Continental Flying Spur (Automata)  (2003-2011)","https://katalogus.hasznaltauto.hu/bentley/bentley_continental_flying_spur_automata-3390","Nagykocsi","Sedan","Benzin",60.27,12,411,559,312,5.8,409,17.11,2940,1915,5306,1478,4,5
+"36",36,"BENTLEY Bentley Continental GT 6.0 (Automata)  (2003-2011)","https://katalogus.hasznaltauto.hu/bentley/bentley_continental_gt_6.0_automata-3391","Nagykocsi","Coupe","Benzin",60.523,12,411,559,318,5.2,409,17.11,2800,1918,4804,1390,2,4
+"37",37,"BENTLEY Bentley Continental GT Speed (Automata)  (2007-2011)","https://katalogus.hasznaltauto.hu/bentley/bentley_continental_gt_speed_automata-3392","Nagykocsi","Coupe","Benzin",68.143,12,449,611,326,4.8,397,16.61,2800,1918,4804,1380,2,4
+"38",38,"BENTLEY Bentley Continental GTC 6.0 (Automata)  (2007-2011)","https://katalogus.hasznaltauto.hu/bentley/bentley_continental_gtc_6.0_automata-3393","Nagykocsi","Cabrio","Benzin",66.111,12,411,559,318,5.2,409,17.11,2900,1918,4804,1398,2,4
+"39",39,"BENTLEY Bentley Continental (Automata)  (1994-1995)","https://katalogus.hasznaltauto.hu/bentley/bentley_continental_automata-103166","Nagykocsi","Cabrio","Benzin",51.15,8,180,245,210,NA,NA,NA,2920,1830,5190,1520,2,4
+"40",40,"BENTLEY Bentley Continental R (Automata)  (1994-1995)","https://katalogus.hasznaltauto.hu/bentley/bentley_continental_r_automata-103167","Nagykocsi","Coupe","Benzin",49.275,8,265,360,245,6.5,NA,NA,2850,1870,5340,1460,2,4
+"41",41,"BENTLEY Bentley Continental R (Automata)  (1996-2002)","https://katalogus.hasznaltauto.hu/bentley/bentley_continental_r_automata-103172","Nagykocsi","Coupe","Benzin",113.13,8,283,385,249,6.3,413,17.31,2850,2058,5342,1462,2,4
+"42",42,"BENTLEY Bentley Continental T (Automata)  (1996-2002)","https://katalogus.hasznaltauto.hu/bentley/bentley_continental_t_automata-103173","Nagykocsi","Coupe","Benzin",127.75,8,298,405,249,6,413,17.31,2850,1920,5240,1450,2,4
+"43",43,"BENTLEY Bentley Continental GT 6.0 (Automata)  (2019–)","https://katalogus.hasznaltauto.hu/bentley/bentley_continental_gt_6.0_automata-124997","Nagykocsi","Coupe","Benzin",68.753,12,467,635,333,3.7,278,12.21,2715,1966,4850,1405,2,4
+"44",44,"BENTLEY Bentley Continental GT Convertible 6.0 (Automata)  (2019-2020)","https://katalogus.hasznaltauto.hu/bentley/bentley_continental_gt_convertible_6.0_automata-124998","Nagykocsi","Cabrio","Benzin",NA,12,467,635,333,3.8,280,12.31,2865,1964,4850,1399,2,4
+"45",45,"BENTLEY Bentley Continental GT 4.0 (Automata)  (2019-2020)","https://katalogus.hasznaltauto.hu/bentley/bentley_continental_gt_4.0_automata-124999","Nagykocsi","Coupe","Benzin",NA,8,404,549,318,4,258,11.21,2705,1966,4850,1405,2,4
+"46",46,"BENTLEY Bentley Continental GT Convertible 4.0 (Automata)  (2019-2020)","https://katalogus.hasznaltauto.hu/bentley/bentley_continental_gt_convertible_4.0_automata-125000","Nagykocsi","Cabrio","Benzin",NA,8,404,549,318,4,260,11.31,2855,1964,4850,1399,2,4
+"47",47,"BENTLEY 6.7 Turbo (1980-1984)","https://katalogus.hasznaltauto.hu/bentley/6.7_turbo-67515",NA,"Lépcsõshátú","Benzin",NA,8,182,248,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"48",48,"BENTLEY 6.7 (1980-1984)","https://katalogus.hasznaltauto.hu/bentley/6.7-67516",NA,"Lépcsõshátú","Benzin",NA,8,221,301,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"49",49,"BENTLEY 6.7 (1986-1987)","https://katalogus.hasznaltauto.hu/bentley/6.7-67517",NA,"Lépcsõshátú","Benzin",NA,8,158,215,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"50",50,"BENTLEY 6.7 (1986-1989)","https://katalogus.hasznaltauto.hu/bentley/6.7-67518",NA,"Lépcsõshátú","Benzin",NA,8,176,239,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"51",51,"BENTLEY 6.7 S (1989-1992)","https://katalogus.hasznaltauto.hu/bentley/6.7_s-67519",NA,"Lépcsõshátú","Benzin",NA,8,160,218,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"52",52,"BENTLEY 6.7 S (1989-1992)","https://katalogus.hasznaltauto.hu/bentley/6.7_s-67520",NA,"Lépcsõshátú","Benzin",NA,8,166,226,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"53",53,"BENTLEY 6.8 (2009–)","https://katalogus.hasznaltauto.hu/bentley/6.8-67521",NA,"Lépcsõshátú","Benzin",NA,8,377,513,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"54",54,"BENTLEY 6.8 16V (1981-1987)","https://katalogus.hasznaltauto.hu/bentley/6.8_16v-67522",NA,"Lépcsõshátú","Benzin",NA,8,164,223,NA,NA,NA,NA,NA,NA,NA,NA,4,NA
+"55",55,"BENTLEY 6.7 16V (1984-1992)","https://katalogus.hasznaltauto.hu/bentley/6.7_16v-67523",NA,"Lépcsõshátú","Benzin",NA,8,164,223,NA,NA,NA,NA,NA,NA,NA,NA,4,NA
+"56",56,"BENTLEY 6.8 16V TURBO (1982-1983)","https://katalogus.hasznaltauto.hu/bentley/6.8_16v_turbo-67524",NA,"Lépcsõshátú","Benzin",NA,8,164,223,NA,NA,NA,NA,NA,NA,NA,NA,4,NA
+"57",57,"BENTLEY 6.7 Long (1989-1998)","https://katalogus.hasznaltauto.hu/bentley/6.7_long-67525",NA,"Lépcsõshátú","Benzin",NA,8,230,313,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA
+"58",58,"BENTLEY 6.8 16V (1988.)","https://katalogus.hasznaltauto.hu/bentley/6.8_16v-67526",NA,"Lépcsõshátú","Benzin",NA,8,224,305,NA,NA,NA,NA,NA,NA,NA,NA,4,NA
+"59",59,"BENTLEY 6.7 16V (1989-1998)","https://katalogus.hasznaltauto.hu/bentley/6.7_16v-67527",NA,"Lépcsõshátú","Benzin",NA,8,224,305,NA,NA,NA,NA,NA,NA,NA,NA,4,NA
+"60",60,"BENTLEY Bentley Turbo R (Automata)  (1994-1995)","https://katalogus.hasznaltauto.hu/bentley/bentley_turbo_r_automata-103164","Nagykocsi","Sedan","Benzin",36.38,8,265,360,235,6.6,NA,NA,2950,1880,5270,1480,4,5
+"61",61,"BENTLEY Bentley Turbo RL (Automata)  (1994-1995)","https://katalogus.hasznaltauto.hu/bentley/bentley_turbo_rl_automata-103165","Nagykocsi","Sedan","Benzin",41.93,8,265,360,235,6.6,NA,NA,2350,1800,5370,1480,4,5
+"62",62,"BENTLEY Bentley Turbo R (Automata)  (1996-2002)","https://katalogus.hasznaltauto.hu/bentley/bentley_turbo_r_automata-103170","Nagykocsi","Sedan","Benzin",83.98,8,286,389,241,6.3,425,17.81,2950,2110,5294,1485,4,5
+"63",63,"BENTLEY Bentley Turbo R Sport (Automata)  (1996-2002)","https://katalogus.hasznaltauto.hu/bentley/bentley_turbo_r_sport_automata-103171","Nagykocsi","Sedan","Benzin",89.7,8,286,389,241,6.3,413,17.31,2950,2110,5294,1485,4,5
